@@ -1,0 +1,91 @@
+{%load crispy_forms_tags %}
+{%block content%}
+<head>
+  <title>Officers</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<style>
+  .navbar {
+margin-bottom: 5px;
+border-radius: 5px;
+}
+
+.jumbotron {
+margin-bottom: 5px;
+font-family: serif;
+}
+
+
+</style>
+</head>
+<body>
+
+
+<nav class="navbar navbar-inverse">
+<div class="container-fluid">
+<div class="navbar-header">
+  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>                        
+  </button>
+</div>
+<div class="collapse navbar-collapse" id="myNavbar">
+  <ul class="nav navbar-nav">
+  </ul>
+  <ul class="nav navbar-nav navbar-right">
+    <li><a href={% url 'Home' %}>Home</a></li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        OSA
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href={% url 'signup' %}>Sign-up</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href={% url 'login' %}>Log-In</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href={% url 'crud' %}>List of officers</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href={% url 'Data' %}>Proposed Activities</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href={% url 'View' %}>Reports</a>
+        <li><a href={% url 'Report' %}>Contact Us</a></li>
+        <li><a href={% url 'login' %}>Log-Out</a></li>
+      </div>
+    </li>
+  </ul>
+  
+</div>
+</div>
+</nav>
+
+</div>
+
+<body>
+    <div class="container">
+      <br>
+      <h3><i><b>Registration for Officers</b></i></h3>
+      <p><i>"For the Students, By the Students"</i></p>
+
+	<form action="" method="POST">
+      <center>
+		{% csrf_token %}
+		{{ form|crispy }}
+    <br>
+  <button onclick="myFunction()" type="SUBMIT" class="btn btn-warning">SUBMIT</button>
+  <script>
+    function myFunction() {
+      alert("I have duly reviewed the entries in this preview page and declare that the information above is true, complete, and correct to the best of my knowledge.");
+    }
+    </script>
+</center>
+  </form>
+</div>
+</body>
+
+{%endblock content%}
+

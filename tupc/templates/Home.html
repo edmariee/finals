@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Log In</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+        .navbar {
+      margin-bottom: 5px;
+      border-radius: 5px;
+    }
+     
+     .jumbotron {
+      margin-bottom: 5px;
+     font-family: serif;
+    }
+   
+
+  </style>
+</head>
+<body>
+
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href={% url 'Home' %}>Home</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Office of Student Affairs (OSA)
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href={% url 'signup' %}>Sign-up</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href={% url 'login' %}>Log-In</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href={% url 'crud' %}>List of officers</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href={% url 'Data' %}>Proposed Activities</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href={% url 'View' %}>Reports</a>
+                <li><a href={% url 'Report' %}>Contact Us</a></li>
+                <li><a href={% url 'logout' %}>Log-Out</a></li>
+              </div>
+            </li>
+          </ul>
+          
+  </nav>
+
+  </div>
+  
+</head>
+<body>
+
+<div class="container">
+  <br>
+  <h1><i><b>TUPC - Accredited Student Organization</b></i></h1>
+  <div class="card">
+    <div class="card-header">
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <p>"A leader is one who knows the way, goes the way, and shows the way."</p>
+        <footer class="blockquote-footer"> <cite title="Source Title">-John Maxwell</cite></footer>
+      </blockquote>
+    </div>
+  </div> 
+<style>
+  * {
+    box-sizing: border-box;
+  }
+  
+  #myInput {
+    background-image: url('/css/searchicon.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+  }
+  
+  #myTable {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #ddd;
+    font-size: 18px;
+  }
+  
+  #myTable th, #myTable td {
+    text-align: left;
+    padding: 12px;
+  }
+  
+  #myTable tr {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  #myTable tr.header, #myTable tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  
+  </style>
+  </head>
+  <body>
+  <div class="container">
+  <table class="table table-bordered">   
+    <br>
+    <br>
+    <br>
+  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search your Organization.." title="Type in a name">
+  
+  <thead>
+    <a href="{% url 'org' %}"><button class="btn btn-danger" type="button">Add Organization</button></a></div></div>   
+  
+  <table id="myTable">
+    <tr class="header">
+      <th style="font-size: 20px;">Organization Name</th>
+  
+    </tr>
+    <tbody>
+      {% for last in organizationID %}
+        <tr>
+          <td>{{ last.org }}</td>
+          <td>
+            <a href="{% url 'Form' %}"><button class="btn btn-warning" type="button">Form</button></a></div></div>
+              <a href="{% url 'update_profile' last.id %}"><button class="btn btn-warning" type="button">Edit</button></a></div></div>
+          </td>    
+    </tr>
+    {% empty %}
+    <tr><td colspan="3"><b>Data is empty! Please, add data first.</b></td></tr>
+    {% endfor %}
+  </tbody>
+  </table>
+  
+  <script>
+  function myFunction() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[0];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }       
+    }
+  }
+  </script>
+  <br>
+  <br>
+</body>
+</html>

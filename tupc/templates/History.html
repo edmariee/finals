@@ -1,0 +1,117 @@
+{%load crispy_forms_tags %}
+{%block content%}
+<head>
+  <title>CRUD</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+}
+
+
+</style>
+</head>
+<body>
+<div class="container">
+  <br> 
+<h3><i><b>List of Officers</i></b></h3>
+<p><i>"For the Students, By the Students"</i></p>    
+<table class="table table-bordered">   
+  <br>
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Academic year.." title="Type in a name">
+
+<thead>
+  <a href="{% url 'Form' %}"><button class="btn btn-danger" type="button">Add Members</button></a></div></div>   
+  <br><br>
+
+<table id="myTable">
+  <tr class="header">
+    <th style="font-size: 15px;">Academic Year</th>
+    <th style="font-size: 15px;">Last Name</th>
+     <th style="font-size: 15px;">First Name</th>
+        <th style="font-size: 15px;">Position</th>
+        <th style="font-size: 15px;">Course</th>
+        <th style="font-size: 15px;">Student ID number</th>
+        <th style="font-size: 15px;">Gender</th>
+  </tr>
+  <tbody>
+    {% for em in studentID %}
+  <tr>
+    <td>{{ em.academic }}</td>
+    <td>{{ em.last }}</td>
+    <td>{{ em.first }}</td>
+    <td>{{ em.position }}</td>
+    <td>{{ em.course }}</td>
+    <td>{{ em.student }}</td>
+    <td>{{ em.sex }}</td>
+  </tr>
+  {% empty %}
+  <tr><td colspan="3"><b>Data is empty! Please, add data first.</b></td></tr>
+  {% endfor %}
+</tbody>
+
+</table>
+
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
+
+<div style="margin-top: 10px; float: right;"><a href="{% url 'Editable' %}"><button class="btn btn-success" type="button">Next Page</button></a></div></div>
+</div>
+</body>
+{%endblock content%}

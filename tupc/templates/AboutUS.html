@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ACSO</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+        .navbar {
+      margin-bottom: 5px;
+      border-radius: 5px;
+    }
+     
+     .jumbotron {
+      margin-bottom: 5px;
+     font-family: serif;
+    }
+   
+
+  </style>
+</head>
+<body>
+
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href={% url 'Home' %}>Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              OSA
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href={% url 'signup' %}>Sign-up</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href={% url 'login' %}>Log-In</a>
+              <li><a href={% url 'Report' %}>Contact Us</a></li>
+    		      <li><a href={% url 'login' %}>Log-Out</a></li>
+            </div>
+          </li>
+        </ul>
+        
+      </div>
+    </div>
+  </nav>
+
+  </div>
+	{% csrf_token %}
+	<br>
+	<center>
+		<h1><i><b>#TUPcACSO</b></i></h1>
+		  <h2><i><b>"For the Students, By the Students."</b></i></h2>
+      <div class="card">
+  <BR>
+    <BR>
+      <div class="card-body">
+        <h5 class="card-title">#Padayon TUPCIANS!</h5>
+        <p class="card-text">Technological University of the Philippines-Cavite USG</p>
+        <a href="https://www.facebook.com/USGTUPC" class="btn btn-danger">TUPC-USG</a>
+      </div>
+    </div>
+
+      <BR>
+        <div class="card-body">
+          <h5 class="card-title">#TUPC-OSA!</h5>
+          <p class="card-text">TUPC-Office of Student Affairs (OSA)</p>
+          <a href="https://www.facebook.com/tupc.osa" class="btn btn-danger">TUPC OSA</a>
+        </div>
+      </div>
+          <BR>
+                <div class="card-body">
+                  <h5 class="card-title">#TUPcians!</h5>
+                  <p class="card-text">TUPC-Office of Academic Affairs (OAA)</p>
+                  <a href="https://www.facebook.com/TUPC-OAA-107416557825633" class="btn btn-danger">TUPC -OAA</a>
+                </div>
+              </div>
+  </center>
+</body>
+</html>
